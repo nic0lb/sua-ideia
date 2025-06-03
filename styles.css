@@ -1,0 +1,337 @@
+/* ====== ESTILO GERAL ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(to right, #52C1A8, #B67EBB);
+  color: white;
+  padding: 6%;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ====== LOGO E TÍTULO ====== */
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    display: flex;
+    gap: 0.4rem;
+    align-items: right;
+  }
+
+  .logo .sua {
+    color: #33333359;
+    text-transform: lowercase;
+  }
+
+  .logo .ideia span {
+    color: linear-gradient(45deg, #F25B84, #4AC0DE);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-transform: lowercase;
+  }
+
+/* ====== NAVEGAÇÃO ====== */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+nav a:hover {
+  opacity: 0.8;
+}
+
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 2em;
+  color: #F25B84;
+  margin-bottom: 20px;
+}
+
+/* ====== ESTILO DOS CARDS ====== */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.card {
+  background-color: #f9f9f9;
+  border: 2px solid #eee;
+  border-radius: 16px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  color: #4AC0DE;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #666;
+  font-size: 0.95em;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: #00000015;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  flex: 1 1 calc(33.333% - 20px);
+  min-width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* ====== BOTÃO WHATSAPP ====== */
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(45deg, #52C1A8, #F25B84);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  background: linear-gradient(45deg, #F25B84, #52C1A8);
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+footer {
+  background-color: #f2f2f2;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #777;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+}
+
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .whatsapp-button {
+    bottom: 15px;
+    right: 15px;
+    font-size: 14px;
+  }
+}
+
+/* ====== ESTILO DO BOTÃO ORÇAMENTO ====== */
+  .btn-whatsapp {
+    display: inline-block;
+    background-color: #52C1A8; /* Verde claro da IDEIA */
+    color: white;
+    font-weight: bold;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1rem;
+    box-shadow: 0 6px 12px rgba(82, 193, 168, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .btn-whatsapp:hover {
+    background-color: #3ea892; /* Tom mais escuro no hover */
+    box-shadow: 0 8px 18px rgba(82, 193, 168, 0.5);
+    transform: scale(1.05);
+  }
+
+  .btn-whatsapp::after {
+    content: "→";
+    position: absolute;
+    right: 20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .btn-whatsapp:hover::after {
+    opacity: 1;
+    right: 16px;
+  }
+
+/* ====== ANIMAÇÃO DE CARREGAMENTO ====== */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* ====== ESTILO DO FEED DO INSTAGRAM ====== */
+#instagram-feed {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+/*========== SEÇÃO DE CONTATO ==========*/
+ .section-contato {
+    background: #dddddd56;
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .contato-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-contato h2 {
+    font-size: 2.5rem;
+    color: #4AC0DE; /* Azul claro */
+    margin-bottom: 10px;
+  }
+
+  .section-contato .subtitulo {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 40px;
+  }
+
+  .contato-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .card-contato {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    flex: 1 1 300px;
+    max-width: 380px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card-contato:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .card-contato h3 {
+    margin-bottom: 10px;
+    color: #F25B84; /* Rosa forte */
+    font-size: 1.4rem;
+  }
+
+  .card-contato p {
+    margin-bottom: 15px;
+    color: #444;
+  }
+
+  .card-contato a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #52C1A8; /* Verde claro */
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .card-contato a:hover {
+    background: #3ea892;
+  }
