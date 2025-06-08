@@ -11,44 +11,52 @@ body {
   color: #333;
 }
 
+.container { /* Estilo para o container principal */
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o container na página */
+    padding: 0 20px; /* Espaçamento lateral interno */
+}
+
 header {
   background: linear-gradient(to right, #52C1A8, #B67EBB);
   color: white;
-  padding: 6%;
+  padding: 40px 0; /* Ajustado para usar o padding do container */
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* ====== LOGO E TÍTULO ====== */
-
 .logo {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 2.5rem;
-    display: flex;
-    gap: 0.4rem;
-    align-items: right;
-  }
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center; /* Centraliza verticalmente o texto no logo */
+  justify-content: center; /* Centraliza horizontalmente o logo no header */
+  width: 100%; /* Garante que o flex ocupe a largura total para centralizar */
+  margin-bottom: 10px; /* Espaço entre o logo e a navegação */
+}
 
-  .logo .sua {
-    color: #33333359;
-    text-transform: lowercase;
-  }
+.logo .sua {
+  color: #33333359;
+  text-transform: lowercase;
+}
 
-  .logo .ideia span {
-    color: linear-gradient(45deg, #F25B84, #4AC0DE);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    text-transform: lowercase;
-  }
+.logo .ideia { /* Corrigido para aplicar o gradiente ao texto da classe .ideia */
+  background-image: linear-gradient(45deg, #F25B84, #4AC0DE);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-transform: lowercase;
+}
 
 /* ====== NAVEGAÇÃO ====== */
 nav {
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-top: 10px;
+  margin-top: 10px; /* Mantido para espaçamento, mas considere se deve ser 0 para centralização perfeita */
 }
 
 nav a {
@@ -73,21 +81,24 @@ section h2 {
   margin-bottom: 20px;
 }
 
-/* ====== ESTILO DOS CARDS ====== */
-.card-container {
+/* ====== ESTILO DOS CARDS (UNIFICADO) ====== */
+.cards { /* Esta classe agora é o container de grid para os cards */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  gap: 30px; /* Espaçamento entre os cards */
   margin-top: 30px;
-  padding: 0 20px;
+  padding: 0 20px; /* Seções já possuem padding, este pode ser redundante dependendo do layout */
+  justify-items: center; /* Centraliza os itens dentro das células do grid */
 }
 
-.card {
-  background-color: #f9f9f9;
-  border: 2px solid #eee;
-  border-radius: 16px;
+.card { /* Estilo unificado para os cards */
+  background-color: #00000015; /* Usando o estilo mais escuro que você tinha */
+  border-radius: 8px; /* Mantendo o border-radius de 8px */
   padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; /* Garante que o card ocupe a largura total da sua célula no grid */
+  max-width: 350px; /* Adicionado um max-width para melhor controle em telas maiores */
 }
 
 .card:hover {
@@ -96,39 +107,8 @@ section h2 {
 }
 
 .card h3 {
-  color: #4AC0DE;
-  margin-bottom: 10px;
-}
-
-.card p {
-  color: #666;
-  font-size: 0.95em;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between;
-}
-
-.card {
-  background-color: #00000015;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  flex: 1 1 calc(33.333% - 20px);
-  min-width: 250px;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card h3 {
   margin-top: 0;
-  color: #333;
+  color: #333; /* Corrigido para a cor que você tinha no segundo bloco */
 }
 
 .card p {
@@ -136,112 +116,69 @@ section h2 {
   font-size: 0.95rem;
 }
 
-/* ====== BOTÃO WHATSAPP ====== */
-.whatsapp-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: linear-gradient(45deg, #52C1A8, #F25B84);
+/* ====== BOTÃO WHATSAPP (BOTÃO DA SEÇÃO HERO) ====== */
+.btn-whatsapp {
+  display: inline-block;
+  background-color: #52C1A8; /* Verde claro da IDEIA */
   color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 15px 20px;
-  font-size: 16px;
+  font-weight: bold;
+  padding: 14px 28px;
+  border-radius: 12px;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: background 0.3s ease;
+  font-size: 1rem;
+  box-shadow: 0 6px 12px rgba(82, 193, 168, 0.3);
+  transition: all 0.3s ease;
+  position: relative; /* Necessário para o ::after */
+  overflow: hidden;
+  margin: 20px 0;
 }
 
-.whatsapp-button:hover {
-  background: linear-gradient(45deg, #F25B84, #52C1A8);
+.btn-whatsapp:hover {
+  background-color: #3ea892; /* Tom mais escuro no hover */
+  box-shadow: 0 8px 18px rgba(82, 193, 168, 0.5);
+  transform: scale(1.05);
 }
 
-.float{
+.btn-whatsapp::after {
+  content: "→";
+  position: absolute;
+  right: 20px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-whatsapp:hover::after {
+  opacity: 1;
+  right: 16px;
+}
+
+/* ====== BOTÃO WHATSAPP FLUTUANTE (BOTTOM RIGHT) ====== */
+/* Removida a classe .whatsapp-button duplicada, mantendo apenas .float */
+.float {
 	position:fixed;
 	width:60px;
 	height:60px;
 	bottom:40px;
 	right:40px;
-	background-color:#25d366;
+	background-color:#25d366; /* Verde WhatsApp */
 	color:#FFF;
 	border-radius:50px;
 	text-align:center;
-  font-size:30px;
+    font-size:30px; /* Tamanho do ícone, se for um texto */
 	box-shadow: 2px 2px 3px #999;
-  z-index:100;
+    z-index:100;
+    display: flex; /* Para centralizar o conteúdo do float */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Para remover sublinhado se for um link */
 }
 
+/* .my-float pode ser usado para estilizar um ícone dentro do .float, se houver */
 .my-float{
-	margin-top:16px;
-}
-footer {
-  background-color: #f2f2f2;
-  padding: 30px 20px;
-  text-align: center;
-  font-size: 0.9em;
-  color: #777;
-  margin-top: 40px;
-  border-top: 1px solid #ddd;
+	/* margin-top:16px; remova esta linha se usar display:flex no .float */
 }
 
-
-@media (max-width: 600px) {
-  nav {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .card-container {
-    grid-template-columns: 1fr;
-  }
-
-  .whatsapp-button {
-    bottom: 15px;
-    right: 15px;
-    font-size: 14px;
-  }
-}
-
-/* ====== ESTILO DO BOTÃO ORÇAMENTO ====== */
-  .btn-whatsapp {
-    display: inline-block;
-    background-color: #52C1A8; /* Verde claro da IDEIA */
-    color: white;
-    font-weight: bold;
-    padding: 14px 28px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-size: 1rem;
-    box-shadow: 0 6px 12px rgba(82, 193, 168, 0.3);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    margin: 20px 0;
-  }
-
-  .btn-whatsapp:hover {
-    background-color: #3ea892; /* Tom mais escuro no hover */
-    box-shadow: 0 8px 18px rgba(82, 193, 168, 0.5);
-    transform: scale(1.05);
-  }
-
-  .btn-whatsapp::after {
-    content: "→";
-    position: absolute;
-    right: 20px;
-    opacity: 0;
-    transition: all 0.3s ease;
-  }
-
-  .btn-whatsapp:hover::after {
-    opacity: 1;
-    right: 16px;
-  }
-
-/* ====== ANIMAÇÃO DE CARREGAMENTO ====== */
+/* ====== ANIMAÇÃO DE CARREGAMENTO (loader) ====== */
 .loader {
   position: fixed;
   top: 0;
@@ -265,73 +202,117 @@ footer {
 }
 
 /*========== SEÇÃO DE CONTATO ==========*/
- .section-contato {
-    background: #dddddd56;
-    padding: 80px 20px;
-    text-align: center;
+.section-contato {
+  background: #dddddd56;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.contato-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-contato h2 {
+  font-size: 2.5rem;
+  color: #4AC0DE; /* Azul claro */
+  margin-bottom: 10px;
+}
+
+.section-contato .subtitulo {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.contato-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.card-contato {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  flex: 1 1 300px;
+  max-width: 380px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-contato:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.card-contato h3 {
+  margin-bottom: 10px;
+  color: #F25B84; /* Rosa forte */
+  font-size: 1.4rem;
+}
+
+.card-contato p {
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.card-contato a {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #52C1A8; /* Verde claro */
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.card-contato a:hover {
+  background: #3ea892;
+}
+
+/* ====== RODAPÉ ====== */
+footer {
+  background-color: #f2f2f2;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #777;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+}
+
+/* ====== RESPONSIVIDADE ====== */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
   }
 
-  .contato-container {
-    max-width: 900px;
-    margin: 0 auto;
+  .cards { /* Ajusta o grid para uma coluna em telas pequenas */
+    grid-template-columns: 1fr;
+  }
+
+  .float { /* Ajusta a posição do botão flutuante em telas pequenas */
+    bottom: 15px;
+    right: 15px;
+    width: 50px; /* Reduz o tamanho do botão */
+    height: 50px;
+    font-size: 24px; /* Reduz o tamanho do ícone */
+  }
+
+  .btn-whatsapp { /* Se for o botão principal da hero, pode ajustar padding */
+    padding: 12px 24px;
+    font-size: 0.9rem;
   }
 
   .section-contato h2 {
-    font-size: 2.5rem;
-    color: #4AC0DE; /* Azul claro */
-    margin-bottom: 10px;
+    font-size: 2rem;
   }
 
   .section-contato .subtitulo {
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 40px;
+    font-size: 1rem;
   }
-
-  .contato-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-  }
-
-  .card-contato {
-    background: white;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    flex: 1 1 300px;
-    max-width: 380px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .card-contato:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-  }
-
-  .card-contato h3 {
-    margin-bottom: 10px;
-    color: #F25B84; /* Rosa forte */
-    font-size: 1.4rem;
-  }
-
-  .card-contato p {
-    margin-bottom: 15px;
-    color: #444;
-  }
-
-  .card-contato a {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #52C1A8; /* Verde claro */
-    color: white;
-    font-weight: bold;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-  }
-
-  .card-contato a:hover {
-    background: #3ea892;
-  }
+}
