@@ -1,16 +1,12 @@
-/* ====== CONFIGURAÇÕES DE CORES (EXTRAÍDAS DA LOGO) ====== */
 :root {
   --logo-blue: #4AC0DE;
   --logo-pink: #F25B84;
   --logo-yellow: #FFD93D;
   --logo-purple: #B67EBB;
   --logo-gradient: linear-gradient(135deg, #4AC0DE 0%, #B67EBB 50%, #F25B84 100%);
-  
   --bg-light: #fcfcfc;
-  --text-main: #2d3436;
   --white: #ffffff;
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
-  --radius: 20px; /* Bordas mais arredondadas para combinar com a logo */
+  --radius: 20px;
 }
 
 * {
@@ -22,7 +18,7 @@
 
 body {
   background-color: var(--bg-light);
-  color: var(--text-main);
+  color: #333;
   line-height: 1.6;
 }
 
@@ -32,7 +28,7 @@ body {
   padding: 0 25px;
 }
 
-/* ====== HEADER & LOGO ====== */
+/* HEADER FIXO */
 header {
   background: var(--white);
   padding: 20px 0;
@@ -51,11 +47,6 @@ header {
   align-items: center;
 }
 
-.logo .sua {
-  color: #444;
-  font-weight: 400;
-}
-
 .logo .ideia {
   background: linear-gradient(to right, var(--logo-blue), var(--logo-yellow), var(--logo-pink));
   -webkit-background-clip: text;
@@ -66,63 +57,52 @@ header {
 nav ul {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 25px;
   list-style: none;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 nav a {
   text-decoration: none;
-  color: var(--text-main);
+  color: #555;
   font-weight: 500;
   font-size: 0.9rem;
-  transition: color 0.3s;
 }
 
-nav a:hover {
-  color: var(--logo-blue);
+/* HERO COM LAYOUT FLEXÍVEL */
+.hero-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 60px 0;
 }
 
-/* ====== SEÇÃO HERO (COM ANIMAÇÃO) ====== */
-.hero {
-  padding: 80px 0;
-  background: radial-gradient(circle at top right, rgba(74, 192, 222, 0.1), transparent),
-              radial-gradient(circle at bottom left, rgba(242, 91, 132, 0.1), transparent);
-}
+.hero-text { flex: 1; }
 
-.hero h2 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-/* Animação de Levitação para a Logo ou Elementos */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .logo-floating {
-  width: 250px;
-  height: 250px;
+  max-width: 300px;
   border-radius: 50%;
   animation: float 4s ease-in-out infinite;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-/* ====== CARDS DE SERVIÇOS E PRODUTOS ====== */
-section h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 40px;
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
 
+/* CARDS COM DETALHE DA LOGO */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
+  margin-top: 40px;
 }
 
 .card {
@@ -131,107 +111,35 @@ section h2 {
   padding: 40px 30px;
   text-align: center;
   border: 1px solid rgba(0,0,0,0.03);
-  box-shadow: var(--shadow-soft);
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s;
 }
 
-/* Detalhe colorido no topo do card */
 .card::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 6px;
+  top: 0; left: 0; width: 100%; height: 6px;
   background: var(--logo-gradient);
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-}
+.card:hover { transform: translateY(-10px); }
 
-.card h3 {
-  color: var(--logo-pink);
-  margin-bottom: 15px;
-}
-
-/* ====== BOTÕES ====== */
+/* BOTÃO WHATSAPP */
 .btn-whatsapp {
   display: inline-block;
   background: var(--logo-gradient);
   color: var(--white);
-  padding: 15px 35px;
+  padding: 16px 35px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: 0.3s;
-  box-shadow: 0 10px 20px rgba(182, 126, 187, 0.3);
+  margin-top: 20px;
 }
 
-.btn-whatsapp:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 25px rgba(182, 126, 187, 0.4);
-}
-
-/* WhatsApp Flutuante */
-.float {
-  position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 30px;
-  right: 30px;
-  background-color: #25d366;
-  color: white;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 25px;
-  z-index: 1000;
-  text-decoration: none;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* ====== CONTATO ====== */
-.section-contato {
-  background: #f0f4f7;
-  padding: 100px 0;
-}
-
-.card-contato {
-  background: white;
-  padding: 30px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-}
-
-.card-contato a {
-  color: white;
-  background: var(--logo-blue);
-  padding: 10px 20px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-block;
-  margin-top: 10px;
-}
-
-/* ====== RESPONSIVIDADE ====== */
+/* RESPONSIVIDADE */
 @media (max-width: 768px) {
-  .hero h2 { font-size: 1.8rem; }
-  
-  .logo-floating {
-    width: 180px;
-    height: 180px;
-  }
-  
-  nav ul {
-    gap: 15px;
-    flex-wrap: wrap;
-  }
-	  }
+  .hero-layout { flex-direction: column; text-align: center; }
+  .logo-floating { max-width: 200px; }
+				}
