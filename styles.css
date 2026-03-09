@@ -1,15 +1,16 @@
-/* ====== CONFIGURAÇÕES GERAIS ====== */
+/* ====== CONFIGURAÇÕES DE CORES (EXTRAÍDAS DA LOGO) ====== */
 :root {
-  --primary-gradient: linear-gradient(135deg, #52C1A8 0%, #B67EBB 100%);
-  --accent-pink: #F25B84;
-  --accent-blue: #4AC0DE;
-  --bg-light: #fdfdfd;
+  --logo-blue: #4AC0DE;
+  --logo-pink: #F25B84;
+  --logo-yellow: #FFD93D;
+  --logo-purple: #B67EBB;
+  --logo-gradient: linear-gradient(135deg, #4AC0DE 0%, #B67EBB 50%, #F25B84 100%);
+  
+  --bg-light: #fcfcfc;
   --text-main: #2d3436;
-  --text-muted: #636e72;
   --white: #ffffff;
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
-  --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
-  --radius: 16px;
+  --radius: 20px; /* Bordas mais arredondadas para combinar com a logo */
 }
 
 * {
@@ -23,7 +24,6 @@ body {
   background-color: var(--bg-light);
   color: var(--text-main);
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 .container {
@@ -32,232 +32,206 @@ body {
   padding: 0 25px;
 }
 
-/* ====== HEADER & NAV ====== */
+/* ====== HEADER & LOGO ====== */
 header {
-  background: var(--primary-gradient);
-  color: var(--white);
-  padding: 60px 0 80px 0;
-  text-align: center;
-  clip-path: ellipse(150% 100% at 50% 0%); /* Curva moderna no fundo */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  background: var(--white);
+  padding: 20px 0;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
   font-weight: 800;
-  font-size: 2.8rem;
-  letter-spacing: -1.5px;
+  font-size: 2.2rem;
   display: flex;
-  gap: 0.5rem;
-  align-items: center;
+  gap: 8px;
   justify-content: center;
-  margin-bottom: 20px;
+  align-items: center;
 }
 
 .logo .sua {
-  color: rgba(255, 255, 255, 0.7);
-  text-transform: lowercase;
+  color: #444;
+  font-weight: 400;
 }
 
 .logo .ideia {
-  background: linear-gradient(45deg, #fff 30%, rgba(255,255,255,0.5));
+  background: linear-gradient(to right, var(--logo-blue), var(--logo-yellow), var(--logo-pink));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-transform: lowercase;
 }
 
-nav {
+nav ul {
   display: flex;
   justify-content: center;
-  gap: 35px;
+  gap: 30px;
+  list-style: none;
+  margin-top: 15px;
 }
 
 nav a {
-  color: var(--white);
   text-decoration: none;
+  color: var(--text-main);
   font-weight: 500;
-  font-size: 0.95rem;
-  opacity: 0.85;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-nav a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: var(--white);
-  transition: width 0.3s ease;
+  font-size: 0.9rem;
+  transition: color 0.3s;
 }
 
 nav a:hover {
-  opacity: 1;
+  color: var(--logo-blue);
 }
 
-nav a:hover::after {
-  width: 100%;
+/* ====== SEÇÃO HERO (COM ANIMAÇÃO) ====== */
+.hero {
+  padding: 80px 0;
+  background: radial-gradient(circle at top right, rgba(74, 192, 222, 0.1), transparent),
+              radial-gradient(circle at bottom left, rgba(242, 91, 132, 0.1), transparent);
 }
 
-/* ====== SEÇÕES ====== */
-section {
-  padding: 100px 0;
-  text-align: center;
-}
-
-section h2 {
-  font-size: 2.2rem;
+.hero h2 {
+  font-size: 2.5rem;
   font-weight: 800;
-  color: var(--text-main);
-  margin-bottom: 15px;
-  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-/* ====== CARDS DE SERVIÇOS ====== */
+/* Animação de Levitação para a Logo ou Elementos */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.logo-floating {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  animation: float 4s ease-in-out infinite;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* ====== CARDS DE SERVIÇOS E PRODUTOS ====== */
+section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
+  gap: 25px;
 }
 
 .card {
   background: var(--white);
   border-radius: var(--radius);
   padding: 40px 30px;
+  text-align: center;
   border: 1px solid rgba(0,0,0,0.03);
   box-shadow: var(--shadow-soft);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Detalhe colorido no topo do card */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: var(--logo-gradient);
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
 }
 
 .card h3 {
-  color: var(--accent-pink);
+  color: var(--logo-pink);
   margin-bottom: 15px;
-  font-size: 1.3rem;
-}
-
-.card p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
 }
 
 /* ====== BOTÕES ====== */
 .btn-whatsapp {
   display: inline-block;
-  background: var(--primary-gradient);
+  background: var(--logo-gradient);
   color: var(--white);
-  font-weight: 700;
-  padding: 16px 35px;
-  border-radius: 50px; /* Botão pílula é mais moderno */
+  padding: 15px 35px;
+  border-radius: 50px;
   text-decoration: none;
-  font-size: 1rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 10px 20px rgba(82, 193, 168, 0.2);
-  transition: all 0.3s ease;
-  margin-top: 20px;
+  transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(182, 126, 187, 0.3);
 }
 
 .btn-whatsapp:hover {
   transform: scale(1.05);
-  box-shadow: 0 15px 25px rgba(82, 193, 168, 0.3);
+  box-shadow: 0 15px 25px rgba(182, 126, 187, 0.4);
 }
 
-/* Botão Flutuante */
+/* WhatsApp Flutuante */
 .float {
   position: fixed;
-  width: 65px;
-  height: 65px;
+  width: 60px;
+  height: 60px;
   bottom: 30px;
   right: 30px;
   background-color: #25d366;
-  color: var(--white);
-  border-radius: 50%;
+  color: white;
+  border-radius: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  font-size: 25px;
   z-index: 1000;
   text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.float:hover {
-  transform: rotate(10deg) scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 /* ====== CONTATO ====== */
 .section-contato {
-  background: #f8f9fa;
-  border-radius: 50px 50px 0 0;
-}
-
-.contato-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  margin-top: 40px;
+  background: #f0f4f7;
+  padding: 100px 0;
 }
 
 .card-contato {
-  background: var(--white);
-  padding: 40px;
+  background: white;
+  padding: 30px;
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
 }
 
-/* ====== RESPONSIVIDADE ====== */
-@media (max-width: 768px) {
-  header {
-    padding: 40px 0 60px 0;
-  }
-
-  .logo {
-    font-size: 2.2rem;
-  }
-
-  nav {
-    gap: 15px;
-    flex-wrap: wrap;
-    padding: 0 10px;
-  }
-
-  nav a {
-    font-size: 0.85rem;
-  }
-
-  section {
-    padding: 60px 0;
-  }
-
-  section h2 {
-    font-size: 1.8rem;
-  }
-
-  .float {
-    bottom: 20px;
-    right: 20px;
-    width: 55px;
-    height: 55px;
-  }
+.card-contato a {
+  color: white;
+  background: var(--logo-blue);
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 10px;
 }
 
-/* Loader Minimalista */
-.loader {
-  position: fixed;
-  inset: 0;
-  background: var(--white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease;
-	}
+/* ====== RESPONSIVIDADE ====== */
+@media (max-width: 768px) {
+  .hero h2 { font-size: 1.8rem; }
+  
+  .logo-floating {
+    width: 180px;
+    height: 180px;
+  }
+  
+  nav ul {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+	  }
