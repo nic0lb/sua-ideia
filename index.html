@@ -9,16 +9,11 @@
 </head>
 <body>
 
-  <div class="loader" id="loader">
-    <span>Carregando...</span>
-  </div>
-
   <header>
     <div class="container">
       <h1 class="logo">
         <span class="sua">Sua</span> <span class="ideia">Ideia</span>
       </h1>
-
       <nav>
         <ul>
           <li><a href="#servicos">Serviços</a></li>
@@ -31,10 +26,15 @@
 
   <main>
     <section class="hero">
-      <div class="container">
-        <h2>Dê vida à sua ideia com impressões de qualidade</h2>
-        <p>Gráfica especializada em transformar conceitos em materiais incríveis.</p>
-        <a href="#contato" class="btn-whatsapp">Peça seu orçamento</a>
+      <div class="container hero-layout">
+        <div class="hero-text">
+          <h2>Dê vida à sua ideia com impressões de qualidade</h2>
+          <p>Transformamos conceitos em materiais incríveis com cores vibrantes.</p>
+          <a href="#contato" class="btn-whatsapp">Peça seu orçamento</a>
+        </div>
+        <div class="hero-image">
+          <img src="logo.png" alt="Sua Ideia Logo" class="logo-floating">
+        </div>
       </div>
     </section>
 
@@ -44,93 +44,23 @@
         <div class="cards">
           <div class="card">
             <h3>Design Gráfico</h3>
-            <p>Criação de artes personalizadas para flyers, cartões de visita e banners.</p>
+            <p>Artes personalizadas para flyers, cartões e banners.</p>
           </div>
           <div class="card">
             <h3>Impressão Digital</h3>
-            <p>Alta qualidade e agilidade para pequenas e médias tiragens.</p>
+            <p>Alta qualidade e agilidade para suas tiragens.</p>
           </div>
           <div class="card">
-            <h3>Acabamento Profissional</h3>
-            <p>Laminação, corte especial e encadernação de alto padrão.</p>
-          </div>
-          <div class="card">
-            <h3>Personalização</h3>
-            <p>Estampas exclusivas em camisetas, canecas e brindes diversos.</p>
+            <h3>Acabamento</h3>
+            <p>Laminação e corte especial de alto padrão.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="produtos" class="section-produtos">
-      <div class="container">
-        <h2>Produtos em Destaque</h2>
-        <div class="cards">
-          <div class="card">
-            <h3>Cartões de Visita</h3>
-            <p>Acabamentos fosco, brilho ou soft touch.</p>
-          </div>
-          <div class="card">
-            <h3>Banners & Faixas</h3>
-            <p>Material resistente para eventos e sinalização.</p>
-          </div>
-          <div class="card">
-            <h3>Adesivos</h3>
-            <p>Recorte especial em vinil ou papel couchê.</p>
-          </div>
-          <div class="card">
-            <h3>Placa de PIX</h3>
-            <p>Facilite o pagamento com QR Code personalizado.</p>
-          </div>
-          </div>
-      </div>
-    </section>
+    </main>
 
-    <section id="instagram">
-      <div class="container">
-        <h2>Siga-nos no Instagram</h2>
-        <div id="instagram-feed" class="instagram-grid">
-          </div>
-      </div>
-    </section>
+  <a href="https://wa.me/SEUNUMERO" class="float" target="_blank">W</a>
 
-    <section id="contato" class="section-contato">
-      <div class="container">
-        <div class="contato-container">
-          <h2>Fale Conosco</h2>
-          <p class="subtitulo">Estamos prontos para tirar seu projeto do papel.</p>
-          
-          <div class="contato-cards">
-            <div class="card-contato">
-              <h3>WhatsApp</h3>
-              <p>Atendimento rápido e orçamentos via chat.</p>
-              <a href="https://wa.me/SEUNUMERO" target="_blank">Enviar Mensagem</a>
-            </div>
-            <div class="card-contato">
-              <h3>E-mail</h3>
-              <p>Envie seus arquivos e especificações técnicas.</p>
-              <a href="mailto:contato@suaideia.com">Enviar E-mail</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 Sua Ideia Gráfica - Todos os direitos reservados.</p>
-    </div>
-  </footer>
-
-  <a href="https://wa.me/SEUNUMERO" class="float" target="_blank">
-    <i class="fa fa-whatsapp"></i> <span>W</span> </a>
-
-  <script async src="//www.instagram.com/embed.js"></script>
-  <script>
-    // Remove o loader após o carregamento
-    window.addEventListener('load', () => {
-      document.getElementById('loader').style.opacity = '0';
-      setTimeout(() => {
-        document.getElementById('loader').style.display = 'none';
-      }, 500
+</body>
+</html>
